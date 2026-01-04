@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login and Welcome App Practice First Before Building The Real One</title>
+</head>
+<body>
+    
+    <h4>Student Welcome App</h4>
+    <input id="input" type="text">
+    <button id="btn">Click</button>
+    <p id="show"></p>
+
+
+
+
+  <script>
+    let inp = document.getElementById('input');
+    let button = document.getElementById('btn');
+    let showInp = document.getElementById('show');
+
+    let names = ['Babs', 'Anna', 'Elsa', 'Ryan', 'Ryu', 'Chun-li'];
+
+
+  button.addEventListener('click', ()=>{
+   let newInput = inp.value.trim();
+    if (newInput === ''){
+      showInp.innerHTML = 'Pls enter ur name!';
+      showInp.style.color = 'red';
+      return;
+    }
+  
+
+  showInp.innerHTML = '';
+
+
+//    for (let i = 0; i < names.length; i++){
+//     if (newInput === names[i]){
+//      alert(`Welcome! ${newInput} It\'s great to have you back`);
+//      return;
+//     } 
+//     } alert(`Welcome ${newInput} It\'s your first time here `)
+
+for (let i = 0; i < names.length; i++){
+    if (names.includes(newInput)){
+     showInp.innerHTML = `Welcome! ${newInput} It\'s great to have you back!`;
+     return;
+    } else{
+      showInp.innerHTML = `Welcome ${newInput} It\'s your first time here! `
+      return;
+  
+    }
+}
+    })
+    
+    
+
+
+
+
+  </script>
+</body>
+</html>

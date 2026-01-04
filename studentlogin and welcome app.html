@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login & Welcome App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-[whitesmoke]">
+    <div class="text-center w-[40%] mx-auto my-[120px] bg-white pt-10 pb-[120px] rounded-lg">
+        <h1 class="text-[30px]">Student Login and Welcome App</h1>
+
+        <div><input class="bg mt-5 rounded-[5px] w-[65%] py-1 pl-2 border" id="inp" type="text"></div>
+
+        <p id="msg" class="mt-2"></p>
+
+
+        <button class="mt-10 bg-green-200 w-[65%] py-2 rounded-[5px]" id="btn" onmouseover="hoverEffect()"
+            onmouseout="outHover()">Click to check</button>
+
+    </div>
+
+
+
+
+    <script>
+        let studentInp = document.getElementById('inp');
+        let btn = document.getElementById('btn');
+        let display = document.getElementById('msg');
+
+        let names = ['Rome', 'Alice', 'Elsa', 'Ryan', 'Adam', 'Adnan'];
+
+
+        // btn.addEventListener('click', function () {
+        //     let newInp = studentInp.value.trim();
+
+        //     let students = ['Husinat', 'Abiodun', 'Huwast', 'Adam', 'Haleemah', 'Azeezat']
+
+
+        //     if (newInp === '') {
+        //         display.innerHTML = 'Please enter your name';
+        //         display.style.color = 'red';
+        //         return;
+        //     }
+
+        //     let see = false;
+        //     for (let i = 0; i < students.length; i++) {
+        //         if (newInp === students[i]) {
+        //             see = true;
+        //             studentInp.value = ''
+        //         }
+        //     }
+        //     if (see === true) {
+        //         display.innerHTML = '';
+        //         display.innerHTML = `Welcome ${newInp}! It's great to have you back😊`;
+        //         display.style.color = 'grey';
+
+        //     } else {
+        //         display.innerHTML = `Welcome ${newInp}! It's your first time here!🤗`;
+        //         display.style.color = 'green';
+
+        //     }
+
+        // })
+
+        let savedStudents = localStorage.getItem('students');
+        if (savedStudents !== null) {
+            let parsedStudents = JSON.parse(savedStudents);
+            names.push(...parsedStudents);
+        }
+
+
+        btn.addEventListener('click', () => {
+            let newInput = studentInp.value.trim();
+
+            if (newInput === '') {
+                display.innerHTML = 'Please enter ur name!';
+                display.style.color = 'red';
+                return;
+            } else if (names.includes(newInput)) {
+                display.innerHTML = `Welcome ${newInput}! It's great to have you back😊`;
+                display.style.color = 'grey';;
+                return;
+            } else {
+                display.innerHTML = `Welcome ${newInput}! It's your first time here!🤗`;
+                names.push(newInput);
+                localStorage.setItem('students', JSON.stringify(names));
+
+                display.style.color = 'green';
+                return;
+            }
+
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        function outHover() {
+            btn.style.backgroundColor = ' #BBF7D0';
+        }
+
+        function hoverEffect() {
+            btn.style.backgroundColor = 'lightgreen';
+        }
+    </script>
+</body>
+
+</html>
